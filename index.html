@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D.A.K.A.P. Drinks - Refreshing Beverages</title> <!-- Enhanced title -->
+    <!-- Tailwind CSS CDN for quick styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS for specific elements like modal backdrop and message box -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Google Fonts - Inter for a clean, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Apply Inter font to the entire body */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom styles for a subtle gradient background in the header */
+        .header-gradient {
+            background: linear-gradient(to right, #6366f1, #8b5cf6); /* Indigo to Violet gradient */
+        }
+        /* Style for active navigation link */
+        .nav-link.active {
+            font-weight: bold;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col items-center">
+
+    <!-- Header Section - Enhanced for a company look -->
+    <header class="w-full header-gradient shadow-lg py-6 px-4 md:px-8">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <!-- Company Logo/Name -->
+            <div class="text-white text-4xl font-extrabold tracking-tight mb-4 md:mb-0">
+                D.A.K.A.P. Drinks Depot
+            </div>
+            <!-- Navigation (placeholder for future links) -->
+            <nav class="space-x-6">
+                <a href="#" class="nav-link text-white hover:text-gray-200 text-lg font-medium transition duration-300" data-page="home-page">Home</a>
+                <a href="#" class="nav-link text-white hover:text-gray-200 text-lg font-medium transition duration-300" data-page="products-page">Products</a>
+                <a href="#" class="nav-link text-white hover:text-gray-200 text-lg font-medium transition duration-300" data-page="about-page">About Us</a>
+                <a href="#" class="nav-link text-white hover:text-gray-200 text-lg font-medium transition duration-300" data-page="contact-page">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area - Page Sections -->
+    <div class="w-full max-w-6xl px-4 md:px-8 pb-16 flex-grow">
+
+        <!-- Home Page Section -->
+        <section id="home-page" class="page-section bg-white py-16 px-4 md:px-8 text-center shadow-md mb-10 rounded-xl">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
+                    Taste the Refreshment, Experience D.A.K.A.P.
+                </h1>
+                <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+                    Discover our exquisite collection of beverages, crafted with care to bring you the perfect sip every time. We are dedicated to quality and flavor, ensuring every bottle brings a smile.
+                </p>
+                <img src="https://t3.ftcdn.net/jpg/14/79/54/86/360_F_1479548601_sgwksAeIlMJrq6dMK3MArGRIRSgDe4o7.jpg" alt="Refreshing Drinks" class="mx-auto rounded-lg shadow-lg mb-8">
+                <p class="text-lg text-gray-600">
+                    From sparkling waters to natural fruit juices, D.A.K.A.P. Drinks offers a diverse range to quench every thirst. Explore our products and find your new favorite!
+                </p>
+            </div>
+        </section>
+
+        <!-- Products Page Section (Initially visible by default, but JS will manage) -->
+        <section id="products-page" class="page-section w-full">
+            <h2 class="text-4xl font-bold text-gray-900 text-center mb-10">Our Featured Drinks-Inventory</h2>
+            <div class="flex justify-end mb-6">
+                <button id="add-drink-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg transform transition-transform duration-200 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                    Add New Drink
+                </button>
+            </div>
+            <!-- Drinks Display Container -->
+            <div id="drinks-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Drink cards will be dynamically loaded here by JavaScript -->
+                <p class="text-center text-gray-600 col-span-full mt-8">Loading drinks...</p>
+            </div>
+        </section>
+
+        <!-- About Us Page Section -->
+        <section id="about-page" class="page-section hidden bg-white py-16 px-4 md:px-8 text-center shadow-md mb-10 rounded-xl">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">About D.A.K.A.P. Drinks Depot</h2>
+                <p class="text-lg text-gray-700 mb-4">
+                    At D.A.K.A.P. Drinks, we believe in crafting beverages that not only refresh but also delight. Founded in 2020, our mission has been to bring high-quality, delicious, and innovative drinks to your table.
+                </p>
+                <p class="text-lg text-gray-700 mb-4">
+                    We source the finest ingredients, prioritize sustainable practices, and employ a passionate team dedicated to perfection. Every bottle tells a story of dedication, from the careful selection of flavors to the final pour.
+                </p>
+                <img src="https://media.istockphoto.com/id/1256656985/photo/united-business-team-with-face-masks-colliding-their-fists-on-a-meeting-in-the-office.jpg?s=612x612&w=0&k=20&c=tERSKsGfrI_weeZE75TNVNtVa_kXzbgpvS9CyEMvSkg=" alt="Our Team" class="mx-auto rounded-lg shadow-lg mb-8">
+                <p class="text-lg text-gray-700">
+                    Join us on our journey to create refreshing moments, one sip at a time. Thank you for choosing D.A.K.A.P. Drinks!
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact Page Section -->
+        <section id="contact-page" class="page-section hidden bg-white py-16 px-4 md:px-8 text-center shadow-md mb-10 rounded-xl">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">Get in Touch with D.A.K.A.P. Drinks</h2>
+                <p class="text-lg text-gray-700 mb-8">
+                    Have questions, feedback, or just want to say hello? We'd love to hear from you!
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">Our Office</h3>
+                        <p class="text-gray-700">Bingham University</p>
+                        <p class="text-gray-700">Faculty of computing</p>
+                        <p class="text-gray-700">Karu,Nassarawa</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">Contact Details</h3>
+                        <p class="text-gray-700">Email: <a href="davidedosa@gmail.com" class="text-blue-600 hover:underline">davidedosa@gmail.com</a></p>
+                        <p class="text-gray-700">Phone: <a href="tel:+2349122860887" class="text-blue-600 hover:underline">+2349122860887</a></p>
+                    </div>
+                </div>
+                <div class="mt-10">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Send Us a Message</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <input type="text" placeholder="Your Name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-lg">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Your Email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-lg">
+                        </div>
+                        <div>
+                            <textarea placeholder="Your Message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-lg"></textarea>
+                        </div>
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </div> <!-- End of Main Content Area -->
+
+    <!-- Message Box for notifications (success/error) -->
+    <div id="message-box" class="message-box hidden"></div>
+
+    <!-- Drink Add/Edit Modal -->
+    <div id="drink-modal" class="modal-backdrop hidden">
+        <div class="modal-content max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 id="modal-title" class="text-3xl font-bold text-gray-800">Add New Drink</h2>
+                <button class="close-button text-gray-500 hover:text-gray-700 text-3xl font-bold">&times;</button>
+            </div>
+            <form id="drink-form" class="space-y-5">
+                <div>
+                    <label for="drink-name" class="block text-lg font-medium text-gray-700 mb-2">Drink Name</label>
+                    <input type="text" id="drink-name" name="name" required
+                           class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-lg">
+                </div>
+                <div>
+                    <label for="drink-description" class="block text-lg font-medium text-gray-700 mb-2">Description</label>
+                    <textarea id="drink-description" name="description" rows="3"
+                              class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-lg"></textarea>
+                </div>
+                <div>
+                    <label for="drink-price" class="block text-lg font-medium text-gray-700 mb-2">Price ($)</label>
+                    <input type="number" id="drink-price" name="price" step="0.01" required
+                           class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-lg">
+                </div>
+                <!-- New Fields Start Here -->
+                <div>
+                    <label for="drink-batch-no" class="block text-lg font-medium text-gray-700 mb-2">Batch No.</label>
+                    <input type="text" id="drink-batch-no" name="batch_no" required
+                           class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-lg">
+                </div>
+                <div>
+                    <label for="drink-expiry-date" class="block text-lg font-medium text-gray-700 mb-2">Expiry Date</label>
+                    <input type="date" id="drink-expiry-date" name="expiry_date" required
+                           class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-lg">
+                </div>
+                <div>
+                    <label for="drink-quantity" class="block text-lg font-medium text-gray-700 mb-2">Quantity</label>
+                    <input type="number" id="drink-quantity" name="quantity" min="0" required
+                           class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-lg">
+                </div>
+                <div>
+                    <label for="drink-subtype" class="block text-lg font-medium text-gray-700 mb-2">Drink Subtype</label>
+                    <input type="text" id="drink-subtype" name="drink_subtype" required
+                           class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-lg"
+                           placeholder="e.g., Soda, Juice, Water">
+                </div>
+                <!-- New Fields End Here -->
+                <div class="flex justify-end space-x-4 pt-4">
+                    <button type="button" class="close-button bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-6 rounded-lg transition duration-200">
+                        Cancel
+                    </button>
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200">
+                        Save Drink
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Confirmation Dialog -->
+    <div id="confirm-dialog" class="modal-backdrop hidden">
+        <div class="confirm-dialog">
+            <h3 class="text-xl font-semibold text-gray-800 mb-6" id="confirm-message">Are you sure you want to proceed?</h3>
+            <div class="flex justify-center space-x-4">
+                <button id="confirm-yes" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200">Yes</button>
+                <button id="confirm-no" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-6 rounded-lg transition duration-200">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="w-full bg-gray-800 text-white py-8 px-4 md:px-8 mt-10">
+        <div class="max-w-6xl mx-auto text-center md:flex md:justify-between md:items-center">
+            <p>&copy; 2025 D.A.K.A.P. Drinks Depot. All rights reserved.</p>
+            <div class="flex justify-center space-x-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-gray-300 transition duration-300">Privacy Policy</a>
+                <a href="#" class="hover:text-gray-300 transition duration-300">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Link to our custom JavaScript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
